@@ -1,0 +1,3 @@
+monitoring:
+    isAlive: false
+    getMonitoringIsAliveState: IDLE

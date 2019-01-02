@@ -1,0 +1,7 @@
+cookies: []
+headers:
+  content-type:
+      - application/json
+ok: false
+status: 500
+statusText: Internal Server Error
