@@ -1,5 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /**
- * Selector functions
+ * selector functions
  *
  * @module selectors
  */
@@ -13,7 +18,9 @@
  *
  * @function
  */
-export const monitoringIsAliveSelector = state => state.monitoring.isAlive
+var monitoringIsAliveSelector = exports.monitoringIsAliveSelector = function monitoringIsAliveSelector(state) {
+  return state.monitoring.isAlive;
+};
 
 /**
  * The request status of `GET /monitoring/isAlive` REST call
@@ -24,4 +31,6 @@ export const monitoringIsAliveSelector = state => state.monitoring.isAlive
  *
  * @function
  */
-export const getMonitoringIsAliveStateSelector = state => state.monitoring.getMonitoringIsAliveState
+var getMonitoringIsAliveStateSelector = exports.getMonitoringIsAliveStateSelector = function getMonitoringIsAliveStateSelector(state) {
+  return state.monitoring.getMonitoringIsAliveState;
+};
