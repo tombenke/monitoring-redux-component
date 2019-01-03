@@ -9,6 +9,7 @@ cd $destDir
 echo $destDir
 pwd
 sh ./.kickoff.sh
+rm node_modules/* -fr
 npm install
 npm run test
 npm run build
