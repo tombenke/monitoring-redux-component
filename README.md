@@ -6,7 +6,7 @@ monitoring-redux-component
 [![Build Status][travis-badge]][travis-url]
 [![Coveralls][BadgeCoveralls]][Coveralls]
 
-A redux store component of monitoring features for UI components 
+A redux state component of monitoring features for UI components 
 
 ## Installation
 
