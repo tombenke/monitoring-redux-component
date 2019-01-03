@@ -13,7 +13,14 @@ const defaultState = {
  */
 
 /**
- * The monitoring reducer
+ * The `monitoring` reducer.
+ *
+ * It is a reducer function with the fingerprint of `function(state, action)`
+ * that handles all actions in relation to monitoring.
+ *
+ * This reducer can be handed over to the `combineReducers()` function too.
+ *
+ * @function
  */
 export const monitoring = handleActions(
     {
