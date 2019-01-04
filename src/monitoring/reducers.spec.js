@@ -10,15 +10,17 @@ import { responseBodyOk, responseErr500, responseNoServer } from './fixtures/'
 
 describe('monitoring.reducers', () => {
     it('should return the initial state', () => {
-        expect(monitoring(undefined, {}))
-            .toBeA('object')
-            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
+        const result = monitoring(undefined, {})
+        expect(result).toBeInstanceOf(Object)
+        expect(result).toHaveProperty('getMonitoringIsAliveState')
+        expect(result).toHaveProperty('isAlive')
     })
 
     it('getMonitoringIsAliveRequest should return a "FETCHING" state', () => {
-        expect(monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()))
-            .toBeA('object')
-            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
+        const result = monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest())
+        expect(result).toBeInstanceOf(Object)
+        expect(result).toHaveProperty('getMonitoringIsAliveState')
+        expect(result).toHaveProperty('isAlive')
     })
 
     it('getMonitoringIsAliveResponse OK should return an "IDLE" state with monitoring list', () => {
@@ -28,15 +30,14 @@ describe('monitoring.reducers', () => {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: true
         }
-        expect(
-            monitoring(
-                monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
-                getMonitoringIsAliveResponse(responseBodyOk)
-            )
+        const result = monitoring(
+            monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
+            getMonitoringIsAliveResponse(responseBodyOk)
         )
-            .toBeA('object')
-            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
-            .toEqual(expectedState)
+        expect(result).toBeInstanceOf(Object)
+        expect(result).toHaveProperty('getMonitoringIsAliveState')
+        expect(result).toHaveProperty('isAlive')
+        expect(result).toEqual(expectedState)
     })
 
     it('getMonitoringIsAliveResponse ERR should return an "IDLE" state with monitoring list', () => {
@@ -47,15 +48,14 @@ describe('monitoring.reducers', () => {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false
         }
-        expect(
-            monitoring(
-                monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
-                getMonitoringIsAliveResponse(responseErr500)
-            )
+        const result = monitoring(
+            monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
+            getMonitoringIsAliveResponse(responseErr500)
         )
-            .toBeA('object')
-            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
-            .toEqual(expectedState)
+        expect(result).toBeInstanceOf(Object)
+        expect(result).toHaveProperty('getMonitoringIsAliveState')
+        expect(result).toHaveProperty('isAlive')
+        expect(result).toEqual(expectedState)
     })
 
     it('no server response should return an "IDLE" and isAlive=false state', () => {
@@ -63,14 +63,13 @@ describe('monitoring.reducers', () => {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false
         }
-        expect(
-            monitoring(
-                monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
-                getMonitoringIsAliveResponse({ error: true, payload: responseNoServer })
-            )
+        const result = monitoring(
+            monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
+            getMonitoringIsAliveResponse({ error: true, payload: responseNoServer })
         )
-            .toBeA('object')
-            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
-            .toEqual(expectedState)
+        expect(result).toBeInstanceOf(Object)
+        expect(result).toHaveProperty('getMonitoringIsAliveState')
+        expect(result).toHaveProperty('isAlive')
+        expect(result).toEqual(expectedState)
     })
 })

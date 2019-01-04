@@ -70,14 +70,14 @@ describe('monitoring.actions', () => {
     })
 
     it('there is no server response', () => {
-        const expectedActions = [
-            { type: 'GET_MONITORING_IS_ALIVE_REQUEST' },
-            { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: responseNoServer }
-        ]
         const store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } })
 
         return store.dispatch(actions.getMonitoringIsAlive()).then(() => {
-            expect(store.getActions()).toEqual(expectedActions)
+            const result = store.getActions()
+            expect(result[0]).toHaveProperty('type', 'GET_MONITORING_IS_ALIVE_REQUEST')
+            expect(result[1]).toHaveProperty('type', 'GET_MONITORING_IS_ALIVE_RESPONSE')
+            expect(result[1]).toHaveProperty('error', true)
+            expect(result[1]).toHaveProperty('payload')
         })
     })
 
