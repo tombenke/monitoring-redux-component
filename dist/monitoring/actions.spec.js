@@ -87,11 +87,14 @@ describe('monitoring.actions', function () {
     });
 
     it('there is no server response', function () {
-        var expectedActions = [{ type: 'GET_MONITORING_IS_ALIVE_REQUEST' }, { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: _fixtures.responseNoServer }];
         var store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } });
 
         return store.dispatch(actions.getMonitoringIsAlive()).then(function () {
-            (0, _expect2.default)(store.getActions()).toEqual(expectedActions);
+            var result = store.getActions();
+            (0, _expect2.default)(result[0]).toHaveProperty('type', 'GET_MONITORING_IS_ALIVE_REQUEST');
+            (0, _expect2.default)(result[1]).toHaveProperty('type', 'GET_MONITORING_IS_ALIVE_RESPONSE');
+            (0, _expect2.default)(result[1]).toHaveProperty('error', true);
+            (0, _expect2.default)(result[1]).toHaveProperty('payload');
         });
     });
 

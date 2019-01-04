@@ -19,11 +19,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 describe('monitoring.reducers', function () {
     it('should return the initial state', function () {
-        (0, _expect2.default)((0, _reducers.monitoring)(undefined, {})).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']);
+        var result = (0, _reducers.monitoring)(undefined, {});
+        (0, _expect2.default)(result).toBeInstanceOf(Object);
+        (0, _expect2.default)(result).toHaveProperty('getMonitoringIsAliveState');
+        (0, _expect2.default)(result).toHaveProperty('isAlive');
     });
 
     it('getMonitoringIsAliveRequest should return a "FETCHING" state', function () {
-        (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)())).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']);
+        var result = (0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)());
+        (0, _expect2.default)(result).toBeInstanceOf(Object);
+        (0, _expect2.default)(result).toHaveProperty('getMonitoringIsAliveState');
+        (0, _expect2.default)(result).toHaveProperty('isAlive');
     });
 
     it('getMonitoringIsAliveResponse OK should return an "IDLE" state with monitoring list', function () {
@@ -33,7 +39,11 @@ describe('monitoring.reducers', function () {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: true
         };
-        (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)(_fixtures.responseBodyOk))).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']).toEqual(expectedState);
+        var result = (0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)(_fixtures.responseBodyOk));
+        (0, _expect2.default)(result).toBeInstanceOf(Object);
+        (0, _expect2.default)(result).toHaveProperty('getMonitoringIsAliveState');
+        (0, _expect2.default)(result).toHaveProperty('isAlive');
+        (0, _expect2.default)(result).toEqual(expectedState);
     });
 
     it('getMonitoringIsAliveResponse ERR should return an "IDLE" state with monitoring list', function () {
@@ -44,7 +54,11 @@ describe('monitoring.reducers', function () {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false
         };
-        (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)(_fixtures.responseErr500))).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']).toEqual(expectedState);
+        var result = (0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)(_fixtures.responseErr500));
+        (0, _expect2.default)(result).toBeInstanceOf(Object);
+        (0, _expect2.default)(result).toHaveProperty('getMonitoringIsAliveState');
+        (0, _expect2.default)(result).toHaveProperty('isAlive');
+        (0, _expect2.default)(result).toEqual(expectedState);
     });
 
     it('no server response should return an "IDLE" and isAlive=false state', function () {
@@ -52,6 +66,10 @@ describe('monitoring.reducers', function () {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false
         };
-        (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)({ error: true, payload: _fixtures.responseNoServer }))).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']).toEqual(expectedState);
+        var result = (0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)({ error: true, payload: _fixtures.responseNoServer }));
+        (0, _expect2.default)(result).toBeInstanceOf(Object);
+        (0, _expect2.default)(result).toHaveProperty('getMonitoringIsAliveState');
+        (0, _expect2.default)(result).toHaveProperty('isAlive');
+        (0, _expect2.default)(result).toEqual(expectedState);
     });
 });
