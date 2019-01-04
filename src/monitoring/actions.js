@@ -29,6 +29,8 @@ export const getMonitoringIsAlive = () => {
                 getMonitoringIsAliveRequest,
                 getMonitoringIsAliveResponse
             )
+        } else {
+            return Promise.resolve(false)
         }
     }
 }

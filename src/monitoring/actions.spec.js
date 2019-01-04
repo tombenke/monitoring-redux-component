@@ -7,7 +7,7 @@ import * as actions from './actions'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-const origin = typeof window === 'undefined' ? 'http://localhost' : window.location.origin
+const origin = 'http://localhost'
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 import { responseBodyOk, responseErr500 } from './fixtures/'
@@ -20,6 +20,16 @@ import { responseBodyOk, responseErr500 } from './fixtures/'
 describe('monitoring.actions', () => {
     afterEach(() => {
         nock.cleanAll()
+    })
+
+    it('nothing should happen if getMonitoringIsAliveState is PENDING', () => {
+
+        const expectedActions = []
+        const store = mockStore({ monitoring: { getMonitoringIsAliveState: 'PENDING' } })
+
+        return store.dispatch(actions.getMonitoringIsAlive()).then(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+        })
     })
 
     it('should create a getMonitoringIsAlive async action with handling RESPONSE OK', () => {

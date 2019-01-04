@@ -3,7 +3,7 @@ import { getMonitoringIsAliveRequest, getMonitoringIsAliveResponse } from './act
 
 const defaultState = {
     getMonitoringIsAliveState: 'IDLE',
-    isAlive: {}
+    isAlive: false
 }
 
 /**
