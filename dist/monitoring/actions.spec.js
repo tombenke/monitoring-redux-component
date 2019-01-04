@@ -87,7 +87,6 @@ describe('monitoring.actions', function () {
     });
 
     it('there is no server response', function () {
-
         var expectedActions = [{ type: 'GET_MONITORING_IS_ALIVE_REQUEST' }, { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: _fixtures.responseNoServer }];
         var store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } });
 

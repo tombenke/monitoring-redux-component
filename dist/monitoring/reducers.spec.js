@@ -48,7 +48,6 @@ describe('monitoring.reducers', function () {
     });
 
     it('no server response should return an "IDLE" and isAlive=false state', function () {
-
         var expectedState = {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false

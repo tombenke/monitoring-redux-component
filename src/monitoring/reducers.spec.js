@@ -59,7 +59,6 @@ describe('monitoring.reducers', () => {
     })
 
     it('no server response should return an "IDLE" and isAlive=false state', () => {
-
         const expectedState = {
             getMonitoringIsAliveState: 'IDLE',
             isAlive: false

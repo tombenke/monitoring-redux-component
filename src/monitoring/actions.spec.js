@@ -70,7 +70,6 @@ describe('monitoring.actions', () => {
     })
 
     it('there is no server response', () => {
-
         const expectedActions = [
             { type: 'GET_MONITORING_IS_ALIVE_REQUEST' },
             { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: responseNoServer }
