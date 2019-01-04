@@ -17,7 +17,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var defaultState = {
     getMonitoringIsAliveState: 'IDLE',
-    isAlive: {}
+    isAlive: false
 
     /**
      * reducers

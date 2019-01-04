@@ -23,7 +23,6 @@ describe('monitoring.actions', () => {
     })
 
     it('nothing should happen if getMonitoringIsAliveState is PENDING', () => {
-
         const expectedActions = []
         const store = mockStore({ monitoring: { getMonitoringIsAliveState: 'PENDING' } })
 

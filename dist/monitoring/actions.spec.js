@@ -34,7 +34,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var origin = typeof window === 'undefined' ? 'http://localhost' : window.location.origin;
+var origin = 'http://localhost';
 var middlewares = [_reduxThunk2.default];
 var mockStore = (0, _reduxMockStore2.default)(middlewares);
 
@@ -47,6 +47,15 @@ var mockStore = (0, _reduxMockStore2.default)(middlewares);
 describe('monitoring.actions', function () {
     afterEach(function () {
         _nock2.default.cleanAll();
+    });
+
+    it('nothing should happen if getMonitoringIsAliveState is PENDING', function () {
+        var expectedActions = [];
+        var store = mockStore({ monitoring: { getMonitoringIsAliveState: 'PENDING' } });
+
+        return store.dispatch(actions.getMonitoringIsAlive()).then(function () {
+            (0, _expect2.default)(store.getActions()).toEqual(expectedActions);
+        });
     });
 
     it('should create a getMonitoringIsAlive async action with handling RESPONSE OK', function () {

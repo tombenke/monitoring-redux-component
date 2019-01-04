@@ -32,6 +32,8 @@ var getMonitoringIsAlive = exports.getMonitoringIsAlive = function getMonitoring
                 },
                 mode: 'no-cors'
             }, getMonitoringIsAliveRequest, getMonitoringIsAliveResponse);
+        } else {
+            return Promise.resolve(false);
         }
     };
 };
