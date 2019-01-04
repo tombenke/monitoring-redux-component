@@ -1,7 +1,7 @@
 {
   "name": "monitoring-redux-component",
   "description": "A redux store for UI components of monitoring features",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tags": [
     "redux",
     "component"
