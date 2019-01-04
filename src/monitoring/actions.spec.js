@@ -10,7 +10,7 @@ import thunk from 'redux-thunk'
 const origin = 'http://localhost'
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
-import { responseBodyOk, responseErr500 } from './fixtures/'
+import { responseBodyOk, responseErr500, responseNoServer } from './fixtures/'
 
 //TODO: Use mock data from rest-api specification
 //import restApi from 'sensorvis-rest-api'
@@ -61,6 +61,19 @@ describe('monitoring.actions', () => {
         const expectedActions = [
             { type: 'GET_MONITORING_IS_ALIVE_REQUEST' },
             { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', payload: responseErr500 }
+        ]
+        const store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } })
+
+        return store.dispatch(actions.getMonitoringIsAlive()).then(() => {
+            expect(store.getActions()).toEqual(expectedActions)
+        })
+    })
+
+    it('there is no server response', () => {
+
+        const expectedActions = [
+            { type: 'GET_MONITORING_IS_ALIVE_REQUEST' },
+            { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: responseNoServer }
         ]
         const store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } })
 

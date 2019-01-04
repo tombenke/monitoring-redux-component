@@ -86,6 +86,16 @@ describe('monitoring.actions', function () {
         });
     });
 
+    it('there is no server response', function () {
+
+        var expectedActions = [{ type: 'GET_MONITORING_IS_ALIVE_REQUEST' }, { type: 'GET_MONITORING_IS_ALIVE_RESPONSE', error: true, payload: _fixtures.responseNoServer }];
+        var store = mockStore({ monitoring: { getMonitoringIsAliveState: 'IDLE' } });
+
+        return store.dispatch(actions.getMonitoringIsAlive()).then(function () {
+            (0, _expect2.default)(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
     it('should create an GET_MONITORING_IS_ALIVE_REQUEST action', function () {
         var expectedAction = {
             type: 'GET_MONITORING_IS_ALIVE_REQUEST'

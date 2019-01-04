@@ -46,4 +46,13 @@ describe('monitoring.reducers', function () {
         };
         (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)(_fixtures.responseErr500))).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']).toEqual(expectedState);
     });
+
+    it('no server response should return an "IDLE" and isAlive=false state', function () {
+
+        var expectedState = {
+            getMonitoringIsAliveState: 'IDLE',
+            isAlive: false
+        };
+        (0, _expect2.default)((0, _reducers.monitoring)((0, _reducers.monitoring)((0, _reducers.monitoring)(undefined, {}), (0, _actions.getMonitoringIsAliveRequest)()), (0, _actions.getMonitoringIsAliveResponse)({ error: true, payload: _fixtures.responseNoServer }))).toBeA('object').toIncludeKeys(['getMonitoringIsAliveState', 'isAlive']).toEqual(expectedState);
+    });
 });

@@ -39,7 +39,7 @@ var defaultState = {
     return _extends({}, state, { getMonitoringIsAliveState: 'FETCHING' });
 }), _defineProperty(_handleActions, _actions.getMonitoringIsAliveResponse, function (state, action) {
     var newState = _extends({}, state, { getMonitoringIsAliveState: 'IDLE' });
-    if (action.payload.hasOwnProperty('ok') && action.payload.ok === false) {
+    if (action.payload.hasOwnProperty('ok') && action.payload.ok === false || action.payload.hasOwnProperty('error') && action.payload.error === true) {
         newState.isAlive = false;
     } else {
         newState.isAlive = true;

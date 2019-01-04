@@ -1,7 +1,7 @@
 import expect from 'expect'
 import { getMonitoringIsAliveRequest, getMonitoringIsAliveResponse } from './actions'
 import { monitoring } from './reducers'
-import { responseBodyOk, responseErr500 } from './fixtures/'
+import { responseBodyOk, responseErr500, responseNoServer } from './fixtures/'
 
 //TODO: Use mock data from rest-api specification
 //import restApi from 'monitoring-rest-api'
@@ -51,6 +51,23 @@ describe('monitoring.reducers', () => {
             monitoring(
                 monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
                 getMonitoringIsAliveResponse(responseErr500)
+            )
+        )
+            .toBeA('object')
+            .toIncludeKeys(['getMonitoringIsAliveState', 'isAlive'])
+            .toEqual(expectedState)
+    })
+
+    it('no server response should return an "IDLE" and isAlive=false state', () => {
+
+        const expectedState = {
+            getMonitoringIsAliveState: 'IDLE',
+            isAlive: false
+        }
+        expect(
+            monitoring(
+                monitoring(monitoring(undefined, {}), getMonitoringIsAliveRequest()),
+                getMonitoringIsAliveResponse({ error: true, payload: responseNoServer })
             )
         )
             .toBeA('object')

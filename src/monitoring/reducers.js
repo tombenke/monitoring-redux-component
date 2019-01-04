@@ -27,7 +27,8 @@ export const monitoring = handleActions(
         [getMonitoringIsAliveRequest]: state => ({ ...state, getMonitoringIsAliveState: 'FETCHING' }),
         [getMonitoringIsAliveResponse]: (state, action) => {
             let newState = { ...state, getMonitoringIsAliveState: 'IDLE' }
-            if (action.payload.hasOwnProperty('ok') && action.payload.ok === false) {
+            if (action.payload.hasOwnProperty('ok') && action.payload.ok === false ||
+                action.payload.hasOwnProperty('error') && action.payload.error === true) {
                 newState.isAlive = false
             } else {
                 newState.isAlive = true
