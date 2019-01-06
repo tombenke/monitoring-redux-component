@@ -1,6 +1,5 @@
 import babelPolyfill from 'babel-polyfill'
 import nock from 'nock'
-import fetch from 'isomorphic-fetch'
 import expect from 'expect'
 import * as actions from './actions'
 
