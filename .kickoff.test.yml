@@ -1,5 +1,5 @@
 # Configuration file to generate test-redux-component via kickoff
-# kickoff -a test-redux-component.yml -f ~/topics/monitoring-redux-component/ -d test-redux-component
+# kickoff -a .kickoff.test.yml -f ~/topics/monitoring-redux-component/ -d test-redux-component
 package_name: test-redux-component
 package_description: A redux state component
 author_full_name: Test Author
