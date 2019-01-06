@@ -24,7 +24,7 @@
     "lodash": "^4.17.11",
     "redux": "^3.6.0",
     "redux-actions": "^2.2.1",
-    "redux-rest-call": "^1.0.1",
+    "redux-rest-call": "^1.0.3",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4"
   },

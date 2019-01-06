@@ -8,10 +8,6 @@ var _nock = require('nock');
 
 var _nock2 = _interopRequireDefault(_nock);
 
-var _isomorphicFetch = require('isomorphic-fetch');
-
-var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
 var _expect = require('expect');
 
 var _expect2 = _interopRequireDefault(_expect);
