@@ -29,7 +29,8 @@ export const monitoring = handleActions(
             let newState = { ...state, getMonitoringIsAliveState: 'IDLE' }
             if (
                 (action.payload.hasOwnProperty('ok') && action.payload.ok === false) ||
-                (action.payload.hasOwnProperty('error') && action.payload.error === true)
+                action.payload.hasOwnProperty('error') && action.payload.error === true ||
+                (action.hasOwnProperty('error') && action.error === true)
             ) {
                 newState.isAlive = false
             } else {
